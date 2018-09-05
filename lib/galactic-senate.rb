@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "galactic-senate/version"
+require "galactic-senate/configuration"
+require "galactic-senate/delegation"
 
 module GalacticSenate
   class << self
@@ -24,5 +26,5 @@ module GalacticSenate
   end
 end
 
-require "galactic-senate/configuration"
+
 
