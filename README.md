@@ -18,9 +18,36 @@ Or install it yourself as:
 
     $ gem install galactic-senate
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+Create an initializer to setup the configuration variables of the GEM.
+
+Setting the redis server to connect to is required.
+
+```
+   require 'galactic-senate'
+   
+   GalacticSenate.configure do |config|
+     config.redis = Redis.current
+     config.logger = Rails.logger
+   
+     config.on(:elected) do
+       Rails.logger.warn "I was just elected!!"
+     end
+   
+     config.on(:ousted) do
+       Rails.logger.warn "I was just ousted!!"
+     end
+   end
+```
+
+### Configuration Variables
+
+#### Redis
+
+#### Logger
+
+#### Callbacks
 
 ## Development
 
@@ -30,7 +57,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/galactic-senate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jdejong/galactic-senate. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

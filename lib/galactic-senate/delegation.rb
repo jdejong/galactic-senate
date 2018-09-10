@@ -35,8 +35,6 @@ module GalacticSenate
 
       vote_of_no_confidence
 
-      sleep(interval + rand(RAND_INTERVAL)) unless supreme_chancellor?
-
       timer_task = Concurrent::TimerTask.new(execution_interval: interval) do |task|
 
         begin
@@ -54,7 +52,6 @@ module GalacticSenate
 
     def vote_now
       if supreme_chancellor?
-        # update_supreme_chancellor ? ( @supreme_chancellor_timeout = Time.now.to_f + SENATOR_INTERVAL ) : @supreme_chancellor_timeout = 0
         if update_supreme_chancellor
           @supreme_chancellor_timeout = Time.now.to_f + SENATOR_INTERVAL
         else
@@ -67,8 +64,6 @@ module GalacticSenate
     end
 
     def vote_of_no_confidence
-      # elect_me_supreme_chancellor? ? ( @supreme_chancellor_timeout = Time.now.to_f + SENATOR_INTERVAL ) : @supreme_chancellor_timeout = 0
-
       if elect_me_supreme_chancellor?
         @supreme_chancellor_timeout = Time.now.to_f + SENATOR_INTERVAL
         fire_event(:elected)
